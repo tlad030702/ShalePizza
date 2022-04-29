@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\FoodRepo;
+use App\Repositories\CategoryRepo;
+use App\Repositories\CategoryRepos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Http\UploadedFile;
 // use Illuminate\Support\Facades\Validator;
 
 class FoodController extends Controller
@@ -30,6 +34,7 @@ class FoodController extends Controller
             //         'category_id'=>''
             //     ]
             // ]
+            ['categories'=>CategoryRepos::getAll()]
         );
     }
 
@@ -52,6 +57,46 @@ class FoodController extends Controller
         //     'category_id'=>$request->input('category_id')
         // ];
         // FoodRepo::insert($food);
+        return to_route('foods');
+    }
+
+    public function edit($id){
+        return view('dashboard.foods.edit',[
+            'food'=>FoodRepo::getById($id),
+            'categories'=>CategoryRepos::getAll()
+        ]);
+    }
+
+    public function update(Request $request, $id){
+        $this->validate($request, $this->rules());
+        FoodRepo::update(
+            $id,
+            $request->name,
+            $request->price,
+            $this->upload($request->file('image')),
+            $request->description,
+            $request->category_id
+        );
+
+        return to_route('foods');
+    }
+
+    public function upload(UploadedFile $image){
+        $str = Str::random(7) . $image->getClientOriginalName() . $image->getClientOriginalName();
+        $image->move(public_path('media'), $str);
+        return "media/$str";
+    }
+
+    public function confirm($id){
+        return view('dashboard.foods.confirm',[
+            'food'=>FoodRepo::getById($id),
+            'categories'=>CategoryRepos::getAll()
+        ]);
+    }
+
+    public function delete($id){
+        FoodRepo::delete($id);
+        return to_route('foods');
     }
 
     public function rules(){
