@@ -32,7 +32,7 @@
                     <label for="description">Description</label>
                     <input type="text" name="description" class="form-control" value="{{ old('description') }}">
                     
-                    @php
+                    {{-- @php
                         $cId = old('category') ?? $food->category_id ?? null;
                     @endphp
                     <div class="form-group">
@@ -49,7 +49,7 @@
                         @error('category_id')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
-                    </div>
+                    </div> --}}
 
                     <div class="form-group text-center mt-3">
                         <button type="submit" class="btn btn-success">Create Food</button>
