@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\FoodController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 //CRUD Category
 Route::group(['prefix' => 'category'], function () {
     Route::get('', [
@@ -24,3 +26,17 @@ Route::group(['prefix' => 'category'], function () {
         'as' => 'category.index'
     ]);
 });
+
+
+Route::get('manager', fn() => view('template.dashboard'))->name('manager');
+//CRUD food
+Route::group(['prefix'=>'foods'],function(){
+    Route::get('', [FoodController::class, 'index'])->name('foods');
+    Route::get('create', [FoodController::class, 'create'])->name('foods.create');
+    Route::post('store',[FoodController::class, 'store'])->name('foods.store');
+    Route::get('{food}/edit',[FoodController::class, 'edit'])->name('foods.edit');
+    Route::post('{food}/update',[FoodController::class, 'update'])->name('foods.update');
+    Route::get('{food}/confirm',[FoodController::class, 'confirm'])->name('foods.confirm');
+    Route::post('{food}/delete',[FoodController::class, 'delete'])->name('foods.delete');
+});
+
