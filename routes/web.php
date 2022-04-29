@@ -19,6 +19,15 @@ Route::get('/', function () {
 });
 
 
+//CRUD Category
+Route::group(['prefix' => 'category'], function () {
+    Route::get('', [
+        'uses' => 'CategoryController@index',
+        'as' => 'category.index'
+    ]);
+});
+
+
 Route::get('manager', fn() => view('template.dashboard'))->name('manager');
 //CRUD food
 Route::group(['prefix'=>'foods'],function(){
@@ -30,3 +39,4 @@ Route::group(['prefix'=>'foods'],function(){
     Route::get('{food}/confirm',[FoodController::class, 'confirm'])->name('foods.confirm');
     Route::post('{food}/delete',[FoodController::class, 'delete'])->name('foods.delete');
 });
+
