@@ -13,12 +13,17 @@ class FoodRepo
         return DB::select($sql);
     }
 
+    public static function search($search){
+        $name = '%' . $search . '%';
+        $sql = "SELECT food.* , categories.name as categoryName FROM food JOIN categories on food.category_id = categories.id WHERE food.name LIKE ?";
+        return DB::select($sql,[$name]);
+    }
+
     public static function getAllWithCategory()
     {
         $sql = 'select f.*, c.name as categoryName ';
         $sql .= 'from food as f ';
-        $sql .= 'join categories as c on f.category_Id = c.id ';
-        $sql .= 'order by f.name ';
+        $sql .= 'join categories as c on f.category_Id = c.id';
 
         return DB::select($sql);
     }
