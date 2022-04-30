@@ -43,21 +43,20 @@
 <div class="container d-flex justify-content-around" id="category">    
     @foreach ($categories as $cat)
         <li>
-            <a href="{{ route('filter.home',['id'=>$cat->id]) }}#menu">
-                <h2>{{ $cat->name }}</h2>
+            <a href="{{ route('filter.home',['id'=>$cat->id]) }}#menu"><h2>{{ $cat->name }}</h2>
             </a>
         </li>
     @endforeach
 </div>
 
-<div class="container mt-5">
+<div class="container">
     <div class="row">
-        @foreach ($foods as $food)
+        @foreach ($search as $food)
             <div class="col-md-3">
-                <div class="card shadow-lg" style="margin-bottom: 30px;">
+                <div class="card shadow-md" style="margin-bottom: 30px;">
                     <a href=""><img class="card-img-top" src="{{ asset($food->image) }}" alt="Card image cap"></a>
                     <div class="card-body">
-                        <a href=""class="card-title">{{ $food->name }}</a>
+                        <a href="" class="card-title">{{ $food->name }}</a>
                         <p class="card-text">{{ $food->price }}$</p>
                     </div>
                 </div>
