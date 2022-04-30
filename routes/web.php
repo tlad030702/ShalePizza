@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Dashboard\FoodController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\FoodController;
+use App\Http\Controllers\Dashboard\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,16 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-//CRUD Category
-Route::group(['prefix' => 'category'], function () {
-    Route::get('', [
-        'uses' => 'CategoryController@index',
-        'as' => 'category.index'
-    ]);
-});
-
-
 Route::get('manager', fn() => view('template.dashboard'))->name('manager');
 //CRUD food
 Route::group(['prefix'=>'foods'],function(){
@@ -39,4 +30,17 @@ Route::group(['prefix'=>'foods'],function(){
     Route::get('{food}/confirm',[FoodController::class, 'confirm'])->name('foods.confirm');
     Route::post('{food}/delete',[FoodController::class, 'delete'])->name('foods.delete');
 });
+
+//CRUD Category
+Route::group(['prefix' => 'category'], function () {
+    Route::get('', [CategoryController::class, 'index'])->name('category');
+    Route::get('create', [CategoryController::class, 'create'])->name('category.create');
+    Route::post('store', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::post('/{id}/update', [CategoryController::class, 'update'])->name('category.update');
+    Route::get('/{id}/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
+    Route::post('/{id}/destroy', [CategoryController::class, 'delete'])->name('category.delete');
+
+});
+
 
