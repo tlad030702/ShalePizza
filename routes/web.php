@@ -22,7 +22,8 @@ Route::get('/', function () {
 Route::get('manager', fn() => view('template.dashboard'))->name('manager');
 //CRUD food
 Route::group(['prefix'=>'foods'],function(){
-    Route::get('', [FoodController::class, 'index'])->name('foods');
+    Route::get('/manager', [FoodController::class, 'index'])->name('foods');
+    Route::get('/search',[FoodController::class,'search'])->name('search');
     Route::get('create', [FoodController::class, 'create'])->name('foods.create');
     Route::post('store',[FoodController::class, 'store'])->name('foods.store');
     Route::get('/{food}/edit',[FoodController::class, 'edit'])->name('foods.edit');

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\FoodRepo;
-use App\Repositories\CategoryRepo;
 use App\Repositories\CategoryRepos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -19,8 +18,11 @@ class FoodController extends Controller
         ]);
     }
 
-    public function search(){
-
+    public function search(Request $request){
+        return view('dashboard.foods.search',[
+            'search' => FoodRepo::search($request->search),
+            'foods' => FoodRepo::getAllWithCategory()
+        ]);
     }
 
     public function create(){
