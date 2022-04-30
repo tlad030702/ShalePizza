@@ -16,7 +16,10 @@ class FoodRepo
     public static function search($search){
         $name = '%' . $search . '%';
         $sql = "SELECT food.* , categories.name as categoryName FROM food JOIN categories on food.category_id = categories.id WHERE food.name LIKE ?";
-        return DB::select($sql,[$name]);
+        if($search)
+            return DB::select($sql,[$name]);
+        else
+            return FoodRepo::getAllWithCategory();
     }
 
     public static function getAllWithCategory()
