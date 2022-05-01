@@ -13,9 +13,10 @@ class HomeController extends Controller
     {
         $food = FoodRepo::getByIdWithCategory($id);
 
-        return view('detail', [
+        return view('details', [
             'food' => $food,
-            'relatives' => FoodRepo::getRelativesByCategory($food->category_id, 4)]);
+            'relatives' => FoodRepo::getRelativesByCategory($food->category_id, 4)
+        ]);
     }
     public function index()
     {
