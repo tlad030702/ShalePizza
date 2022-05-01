@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\FoodController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,10 @@ use App\Http\Controllers\Dashboard\CategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/ShalePizza', [HomeController::class, 'index'])->name('home');
+Route::get('/search',[HomeController::class,'search'])->name('search.home');
+Route::group(['prefix'=>'home'],function(){
+    Route::get('/{id}',[HomeController::class,'filter'])->name('filter.home');
 });
 Route::group(['prefix'=>'home'],function(){
     Route::get('detail/{id}', [HomeController::class,'show'])->name('detail.home');
@@ -27,7 +30,7 @@ Route::get('manager', fn() => view('template.dashboard'))->name('manager');
 //CRUD food
 Route::group(['prefix'=>'foods'],function(){
     Route::get('/manager', [FoodController::class, 'index'])->name('foods');
-    Route::get('/search',[FoodController::class,'search'])->name('search');
+    Route::get('/search',[FoodController::class,'search'])->name('foods.search');
     Route::get('create', [FoodController::class, 'create'])->name('foods.create');
     Route::post('store',[FoodController::class, 'store'])->name('foods.store');
     Route::get('/{food}/edit',[FoodController::class, 'edit'])->name('foods.edit');
