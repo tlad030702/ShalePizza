@@ -26,6 +26,7 @@
                 @if ($shouldDelete)
                 <div class="form-group text-center mt-3">
                     <button type="submit" class="btn btn-danger">Delete</button>
+                    <a href="{{route('category')}}" class="btn btn-info">Cancel</a>
                 </div>
                 @endif
             </form>
