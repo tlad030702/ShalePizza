@@ -53,8 +53,13 @@
     <div class="row">
         @foreach ($search as $food)
             <div class="col-md-3">
+<<<<<<< HEAD
+                <div class="card shadow-md" style="margin-bottom: 30px;">
+                    <a href="{{ route('detail.home', ['id' => $food->id])}}"><img class="card-img-top" src="{{ asset($food->image) }}" alt="Card image cap"></a>
+=======
                 <div class="card shadow-lg" style="margin-bottom: 30px;">
                     <a href=""><img class="card-img-top" src="{{ asset($food->image) }}" alt="Card image cap"></a>
+>>>>>>> 80bcf745c3a8a1808aaf7421e191fd2f2bdc7e0c
                     <div class="card-body">
                         <a href="" class="card-title">{{ $food->name }}</a>
                         <p class="card-text">{{ $food->price }}$</p>
