@@ -8,7 +8,6 @@ use App\Repositories\CategoryRepos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
-// use Illuminate\Support\Facades\Validator;
 
 class FoodController extends Controller
 {
@@ -27,22 +26,12 @@ class FoodController extends Controller
 
     public function create(){
         return view('dashboard.foods.create',
-            // [
-            //     "food" = (object)[
-            //         'name'=>'',
-            //         'price' =>0,
-            //         'image' =>'',
-            //         'description'=>'',
-            //         'category_id'=>''
-            //     ]
-            // ]
             ['categories'=>CategoryRepos::getAll()]
         );
     }
 
     public function store(Request $request){
         $this->validate($request, $this->rules());
-        // $this->formValidatee($request)->validate();
         FoodRepo::insert(
             $request->name,
             $request->price,
@@ -50,15 +39,6 @@ class FoodController extends Controller
             $request->description,
             $request->category_id
         );
-        // $this->rules($request)->validate();
-        // $food =(object)[
-        //     'name'=>$request->input('name'),
-        //     'price' => $request->input('price'),
-        //     'image' => $this->upload($request->file('image')),
-        //     'description'=>$request->input('description'),
-        //     'category_id'=>$request->input('category_id')
-        // ];
-        // FoodRepo::insert($food);
         return to_route('foods');
     }
 
@@ -102,25 +82,18 @@ class FoodController extends Controller
     }
 
     public function rules(){
+        $message = function ($attribute, $value, $fail){
+            if($value == ''){
+                $fail('You must enter name of food');
+                return $value=='';
+            }
+        };
         return[
-            'name'=>'required|string|max:255',
+            'name'=>[$message,'string','max:255'],
             'price' => 'required|numeric|gte:0',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:100000',
             'description' => 'nullable',
             'category_id'=> 'required',
         ];
-        // return Validator::make(
-        //     $request->all(),
-        //     [
-        //         'name'=>'required|string|max:255',
-        //         'price' => 'required|numeric|gte:0',
-        //         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:100000',
-        //         'description' => 'nullable',
-        //         'category_id'=> 'required',
-        //     ],
-        //     [
-        //         'name.required'=>'Please enter name of food'
-        //     ]
-        // );
     }
 }
