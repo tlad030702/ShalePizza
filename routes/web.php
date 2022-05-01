@@ -20,10 +20,7 @@ Route::get('/ShalePizza', [HomeController::class, 'index'])->name('home');
 Route::get('/search',[HomeController::class,'search'])->name('search.home');
 Route::group(['prefix'=>'home'],function(){
     Route::get('/{id}',[HomeController::class,'filter'])->name('filter.home');
-});
-Route::group(['prefix'=>'home'],function(){
     Route::get('detail/{id}', [HomeController::class,'show'])->name('detail.home');
-    Route::get('/{id}',[HomeController::class,'filter'])->name('filter.home');
 });
 
 Route::get('manager', fn() => view('template.dashboard'))->name('manager');
