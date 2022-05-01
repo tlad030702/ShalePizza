@@ -18,6 +18,10 @@ use App\Http\Controllers\Dashboard\CategoryController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['prefix'=>'home'],function(){
+    Route::get('detail/{id}', [HomeController::class,'show'])->name('detail.home');
+    Route::get('/{id}',[HomeController::class,'filter'])->name('filter.home');
+});
 
 Route::get('manager', fn() => view('template.dashboard'))->name('manager');
 //CRUD food
