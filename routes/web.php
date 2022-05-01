@@ -46,7 +46,6 @@ Route::group(['prefix' => 'category'], function () {
     Route::post('/{id}/update', [CategoryController::class, 'update'])->name('category.update');
     Route::get('/{id}/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
     Route::post('/{id}/destroy', [CategoryController::class, 'delete'])->name('category.delete');
-
 });
 
 
