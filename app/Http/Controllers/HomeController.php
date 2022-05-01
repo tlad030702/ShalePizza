@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Repositories\CategoryRepos;
 use Illuminate\Http\Request;
 use App\Repositories\FoodRepo;
+use App\Repositories\CategoryRepos;
 
 class HomeController extends Controller
 {
@@ -16,6 +15,7 @@ class HomeController extends Controller
         return view('detail', [
             'food' => $food,
             'relatives' => FoodRepo::getRelativesByCategory($food->category_id, 4)
+        ]);
     }
     public function index()
     {
