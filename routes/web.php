@@ -17,10 +17,11 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/ShalePizza', [HomeController::class, 'index'])->name('home');
-Route::get('/search',[HomeController::class,'search'])->name('search.home');
+Route::get('/contact', fn() => view('contact'))->name('contact');
+Route::get('/search',[HomeController::class,'contact'])->name('search.home');
 Route::group(['prefix'=>'home'],function(){
-    Route::get('/{id}',[HomeController::class,'filter'])->name('filter.home');
     Route::get('detail/{id}', [HomeController::class,'show'])->name('detail.home');
+    Route::get('/{id}',[HomeController::class,'filter'])->name('filter.home');
 });
 
 Route::get('manager', fn() => view('template.dashboard'))->name('manager');
@@ -45,7 +46,6 @@ Route::group(['prefix' => 'category'], function () {
     Route::post('/{id}/update', [CategoryController::class, 'update'])->name('category.update');
     Route::get('/{id}/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
     Route::post('/{id}/destroy', [CategoryController::class, 'delete'])->name('category.delete');
-
 });
 
 
