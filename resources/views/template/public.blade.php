@@ -42,6 +42,9 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href=" {{ route('contact') }}">Contact us</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ asset('delivery-menu.pdf') }}" download="delivery-menu.pdf">Download menu</a>
+            </li>
             <li style="margin-left: 20px">
               <form class="d-flex search" action="{{ route('search.home')}}#menu" method="GET">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
@@ -51,9 +54,7 @@
           </ul>
           
           <form class="d-flex"></form>
-            <a class="btn btn-danger" 
-            {{-- href="{{ route('register') }}"  --}}
-            role="button">Register</a>
+            <a class="btn btn-danger" href="{{ route('register') }}" role="button">Register</a>
           </form>
         </div>
       </div>
