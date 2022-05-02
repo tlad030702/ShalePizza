@@ -61,3 +61,6 @@ footer {
     height: auto;
     margin-left: 80rem;
 }
+.form-group{
+    width: 50vh;
+}
