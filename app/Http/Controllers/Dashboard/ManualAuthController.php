@@ -21,6 +21,7 @@ class ManualAuthController extends Controller
          * then save username in Session and move to next page
          * Otherwise, go back to login form
          */
+       
         Session::put('email', $request->input('email'));
         return to_route('manager');
     }
