@@ -76,8 +76,7 @@ border-bottom: 1px solid #d5dadb;
                 </p>
                 <p><b>Price:</b> {{ $food->price }}$</p>
                 <div class="form-group">
-                    <label><b>Quantity:</b><input type="number" 
-                    placeholder="1" class="form-control quantity"></label>  
+                    <label><b>Quantity:</b><input type="number" value="1" min="1" class="form-control quantity"></label>  
                 </div>
 
                 <button type="button" class="btn btn-success mt-4" href ="#">Call To Order</button>

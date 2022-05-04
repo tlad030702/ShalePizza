@@ -11,7 +11,7 @@
 @endpush
 
 @section('content')
-    <div class="card">
+    <div class="card shadow-lg">
         <div class="card-body">
             <div class="row">
                <div class="col-md-8">
@@ -30,8 +30,8 @@
                 </div>
             </div>
 
-            <table class="table table-striped table-inverse">
-                <thead class="thead-inverse">
+            <table class="table table-striped">
+                <thead>
                     <tr>
                         <th>#</th>
                         <th>Food</th>
@@ -76,3 +76,9 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $('.bs-tooltip').tooltip('enable');
+    </script>
+@endpush

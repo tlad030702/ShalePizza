@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Dashboard\FoodController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\CustomerController;
+use App\Http\Controllers\Dashboard\ManualAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,8 @@ use App\Http\Controllers\Dashboard\CustomerController;
 |
 */
 
-Route::get('/ShalePizza', [HomeController::class, 'index'])->name('home');
+//home
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/contact', fn() => view('contact'))->name('contact');
 Route::get('/search',[HomeController::class,'contact'])->name('search.home');
 Route::group(['prefix'=>'home'],function(){
@@ -28,6 +30,13 @@ Route::group(['prefix'=>'home'],function(){
 //Register
 Route::get('/register', fn() => view('register'))->name('register');
 Route::post('/store',[CustomerController::class, 'store'])->name('register.store');
+
+//login
+Route::group(['prefix' => 'auth'], function (){
+    Route::get('/login',[ManualAuthController::class, 'ask'])->name('auth.ask');
+    Route::post('/login',[ManualAuthController::class,'signin'])->name('auth.signin');
+    Route::get('/logout',[ManualAuthController::class, 'logout'])->name('auth.logout');
+});
 
 Route::get('manager', fn() => view('template.dashboard'))->name('manager');
 //CRUD food
@@ -58,5 +67,6 @@ Route::group(['prefix' => 'customer'], function() {
     Route::get('/', [CustomerController::class, 'index'])->name('customer');
     Route::get('/{customer}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
     Route::post('/{customer}/update', [CustomerController::class, 'update'])->name('customer.update');
+    Route::get('/{customer}/confirm', [CustomerController::class, 'confirm'])->name('customer.confirm');
     Route::post('/{customer}/delete', [CustomerController::class, 'delete'])->name('customer.delete');
 });

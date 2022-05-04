@@ -1,7 +1,7 @@
 @extends('dashboard.foods.index')
 
 @section('content')
-<div class="card">
+<div class="card shadow-lg">
     <div class="card-body">
         <div class="row">
            <div class="col-md-8">

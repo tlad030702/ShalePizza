@@ -3,7 +3,7 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-6">
-        <div class="card">
+        <div class="card shadow-lg">
             <div class="card-body">
                 <form action="{{ route('foods.delete', $food->id) }}" method="post" enctype="multipart/form-data">
                     <h1 class="text-content">Modify food {{ $food->name }}</h1>
