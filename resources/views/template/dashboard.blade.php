@@ -36,7 +36,8 @@
                     </li>
                     <div class="nav-item dropdown user-profile-dropdown">
                         <a href="" class="nav-link user" data-toggle="dropdown">
-                            <h3><span style="color: white">Hello, 
+                            <h3><span style="color: white">Hello, {{\Illuminate\Support\Facades\Session::has('email')?
+                                \Illuminate\Support\Facades\Session::get('email') : ''}}
                                 {{-- {{ session('admin')->name }} --}}
                             </span></h3>
                         </a>
