@@ -53,6 +53,12 @@ class CustomerController extends Controller
         return to_route('customer');
     }
 
+    public function confirm($id){
+        return view('dashboard.customer.confirm',[
+            'customer'=>CustomerRepos::getById($id)
+        ]);
+    }
+
     public function delete(int $id)
     {
         CustomerRepos::delete($id);

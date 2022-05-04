@@ -3,7 +3,7 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-6">
-        <div class="card">
+        <div class="card shadow-lg">
             <div class="card-body">
                 <form action="{{ route('foods.store') }}" method="post" enctype="multipart/form-data">
                     <h1 class="text-content">Create new food</h1>
@@ -20,7 +20,7 @@
 
                     <div class="form-group">
                         <label for="price" class="font-weight-bold">Price</label>
-                        <input type="number" name="price" class="form-control" value="{{ old('price') }}">
+                        <input type="number" name="price" min="1" class="form-control" value="{{ old('price') }}">
                         @error('price')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror

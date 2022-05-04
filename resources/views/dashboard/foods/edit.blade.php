@@ -3,7 +3,7 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-6">
-        <div class="card">
+        <div class="card shadow-lg">
             <div class="card-body">
                 <form action="{{ route('foods.update', $food->id) }}" method="post" enctype="multipart/form-data">
                     <h1 class="text-content">Modify food {{ $food->name }}</h1>
@@ -35,12 +35,8 @@
                     @error('image')
                         <small class="form-text text-danger">{{ $message }}</small>
                     @enderror 
-                    <div class="card-body">
-                        <div class="container-fluid">
-                            <img src="{{ asset($food->image) }}" alt="" width="200px" height="200px" class="col-md-6">
-                            <input type="text" name="image" value="{{ $food->image }}" class="col-md-5" disabled>
-                        </div>
-                    </div>
+                    <img src="{{ asset($food->image) }}" alt="" width="200px" height="200px" class="col-md-6">
+                    <input type="text" name="image" value="{{ $food->image }}" class="col-md-5" disabled>
                     
                     <div class="form-group">
                         <label for="description" class="font-weight-bold">Description</label>

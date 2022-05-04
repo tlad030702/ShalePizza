@@ -10,13 +10,14 @@
 @endpush
 @section('content')
 <form action="{{ route('register.store') }}" style="min-width: 400px;" method="POST">
-    <h3 class="text-center">Customer Register</h3>
+   
 
     @csrf
     <div class="container">
         <div class="auth">
-            <div class="card shadow">
+            <div class="card shadow-lg mt-3 mb-3">
                 <div class="card-body">
+                    <h3 class="text-center">Customer Register</h3>
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" name="name" id="name" placeholder="Your name" class="form-control">
@@ -64,14 +65,15 @@
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="text-center mt-3">
-        <button type="submit" class="btn btn-primary">Register</button>
-    </div>
+    
 
 </form>
 @endsection
