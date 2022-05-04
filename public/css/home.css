@@ -56,7 +56,11 @@ footer {
     bottom: 3rem;
     z-index: 10;
 }
-.justify-content-end>svg{
+.backtotop>svg{
     width: 50px;
     height: auto;
+    margin-left: 80rem;
+}
+.form-group{
+    width: 50vh;
 }

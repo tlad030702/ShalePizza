@@ -28,12 +28,15 @@
                     
                     <div class="form-group">
                         <label for="image" class="font-weight-bold">Image</label>
-                        <input type="file" name="image" class="form-control" value="{{ old('image') }}">
-                        @error('image')
-                            <small class="form-text text-danger">{{ $message }}</small>
-                        @enderror
+                        <div class="custom-file">
+                            <input type="file" multiple class="custom-file-input">
+                            <label class="custom-file-label" for="inputGroupFile01">Choose files</label>
+                        </div>
                     </div>
-
+                    @error('image')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
+                    
                     <div class="form-group">
                         <label for="description" class="font-weight-bold">Description</label>
                         <input type="text" name="description" class="form-control" value="{{ old('description') }}">

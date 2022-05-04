@@ -11,7 +11,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="name" class="font-weight-bold">Food</label>
-                        <input type="text" name="name" class="form-control" value="{{ $food->name }}">
+                        <input type="text" name="name" class="form-control" value="{{ old('name',$food->name ?? null) }}">
                         @error('name')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
@@ -19,7 +19,7 @@
                     
                     <div class="form-group">
                         <label for="price" class="font-weight-bold">Price</label>
-                        <input type="number" name="price" class="form-control" value="{{ $food->price }}">
+                        <input type="number" name="price" class="form-control" value="{{ old('price', $food->price ?? null) }}">
                         @error('price')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
@@ -31,10 +31,10 @@
                             <input type="file" multiple class="custom-file-input">
                             <label class="custom-file-label" for="inputGroupFile01">Choose files</label>
                         </div>
-                        @error('image')
-                            <small class="form-text text-danger">{{ $message }}</small>
-                        @enderror   
                     </div>
+                    @error('image')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror 
                     <div class="card-body">
                         <div class="container-fluid">
                             <img src="{{ asset($food->image) }}" alt="" width="200px" height="200px" class="col-md-6">
@@ -44,7 +44,7 @@
                     
                     <div class="form-group">
                         <label for="description" class="font-weight-bold">Description</label>
-                        <input type="text" name="description" class="form-control" value="{{ $food->description }}">
+                        <input type="text" name="description" class="form-control" value="{{ old('description', $food->description ?? null) }}">
                     </div>
 
                     @php

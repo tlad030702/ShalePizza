@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Dashboard\FoodController;
 use App\Http\Controllers\Dashboard\CategoryController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Dashboard\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +18,16 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/ShalePizza', [HomeController::class, 'index'])->name('home');
-Route::get('/search',[HomeController::class,'search'])->name('search.home');
+Route::get('/contact', fn() => view('contact'))->name('contact');
+Route::get('/search',[HomeController::class,'contact'])->name('search.home');
 Route::group(['prefix'=>'home'],function(){
-    Route::get('/{id}',[HomeController::class,'filter'])->name('filter.home');
     Route::get('detail/{id}', [HomeController::class,'show'])->name('detail.home');
+    Route::get('/{id}',[HomeController::class,'filter'])->name('filter.home');
 });
+
+//Register
+Route::get('/register', fn() => view('register'))->name('register');
+Route::post('/store',[CustomerController::class, 'store'])->name('register.store');
 
 Route::get('manager', fn() => view('template.dashboard'))->name('manager');
 //CRUD food
@@ -45,7 +51,12 @@ Route::group(['prefix' => 'category'], function () {
     Route::post('/{id}/update', [CategoryController::class, 'update'])->name('category.update');
     Route::get('/{id}/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
     Route::post('/{id}/destroy', [CategoryController::class, 'delete'])->name('category.delete');
-
 });
 
-
+//RUD for customer
+Route::group(['prefix' => 'customer'], function() {
+    Route::get('/', [CustomerController::class, 'index'])->name('customer');
+    Route::get('/{customer}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
+    Route::post('/{customer}/update', [CustomerController::class, 'update'])->name('customer.update');
+    Route::post('/{customer}/delete', [CustomerController::class, 'delete'])->name('customer.delete');
+});
