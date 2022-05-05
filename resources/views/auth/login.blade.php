@@ -24,7 +24,10 @@
       line-height: 1.6;
       color: #212529;
       text-align: left;
-      background-color: #f5f8fa;
+      background: #f5f5f5;
+      background-image: url('https://thumbs.dreamstime.com/b/d-illustration-savoury-pizza-rich-toppings-engraved-style-chalk-doodle-background-copy-space-slogan-savoury-pizza-ads-128297250.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
     }
 
     .navbar-laravel {
@@ -32,7 +35,7 @@
     }
 
     .navbar-brand, .nav-link, .my-form, .login-form {
-      font-family: Raleway, sans-serif;
+        font-family: 'Nunito', sans-serif;
     }
 
     .my-form {
@@ -54,19 +57,18 @@
       margin-left: 0;
       margin-right: 0;
     }
+    .card{
+        background: #f5f5f5;
+    }
   </style>
 
   <title>Login Shale Pizza</title>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
+<nav class="navbar navbar-dark bg-dark navbar-laravel">
   <div class="container">
     <a class="navbar-brand" href="#">Shale Pizza</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
   </div>
 </nav>
 
@@ -74,22 +76,30 @@
   <div class="cotainer">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <div class="card">
+        <div class="card shadow-lg">
           <div class="card-header">Login</div>
           <div class="card-body">
+            
             <form action="{{route('auth.signin')}}" method="post">
               @csrf
+              @include('sessionmessage')
               <div class="form-group row">
                 <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
                 <div class="col-md-6">
-                  <input type="email" id="email" class="form-control" name="email" required autofocus>
+                    <input type="email" id="email" class="form-control" name="email">
+                    @error('email')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
               </div>
 
               <div class="form-group row">
                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                 <div class="col-md-6">
-                  <input type="password" id="password" class="form-control" name="password" required>
+                  <input type="password" id="password" class="form-control" name="password">
+                  @error('password')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                @enderror
                 </div>
               </div>
 

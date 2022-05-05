@@ -38,9 +38,9 @@ Route::group(['prefix' => 'auth'], function (){
     Route::get('/logout',[ManualAuthController::class, 'logout'])->name('auth.logout');
 });
 
-Route::get('manager', fn() => view('template.dashboard'))->name('manager');
+Route::get('manager', fn() => view('template.dashboard'))->name('manager')->middleware('manual.auth');
 //CRUD food
-Route::group(['prefix'=>'foods'],function(){
+Route::group(['prefix'=>'foods', 'middleware' => ['manual.auth']],function(){
     Route::get('/manager', [FoodController::class, 'index'])->name('foods');
     Route::get('/search',[FoodController::class,'search'])->name('foods.search');
     Route::get('create', [FoodController::class, 'create'])->name('foods.create');
@@ -52,7 +52,7 @@ Route::group(['prefix'=>'foods'],function(){
 });
 
 //CRUD Category
-Route::group(['prefix' => 'category'], function () {
+Route::group(['prefix' => 'category', 'middleware' => ['manual.auth']], function () {
     Route::get('', [CategoryController::class, 'index'])->name('category');
     Route::get('create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('store', [CategoryController::class, 'store'])->name('category.store');
@@ -63,7 +63,7 @@ Route::group(['prefix' => 'category'], function () {
 });
 
 //RUD for customer
-Route::group(['prefix' => 'customer'], function() {
+Route::group(['prefix' => 'customer', 'middleware' => ['manual.auth']], function() {
     Route::get('/', [CustomerController::class, 'index'])->name('customer');
     Route::get('/{customer}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
     Route::post('/{customer}/update', [CustomerController::class, 'update'])->name('customer.update');
