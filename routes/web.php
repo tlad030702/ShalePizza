@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Dashboard\FoodController;
+use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\CustomerController;
 use App\Http\Controllers\Dashboard\ManualAuthController;
@@ -39,6 +40,15 @@ Route::group(['prefix' => 'auth'], function (){
 });
 
 Route::get('manager', fn() => view('template.dashboard'))->name('manager');
+
+//RU Admin 
+Route::group(['prefix'=>'admins'], function(){
+    Route::get('/manager', [AdminController::class, 'index'])->name('admins');
+    Route::get('/{id}/edit',[AdminController::class, 'edit'])->name('admin.edit');
+    Route::post('/{id}/update',[AdminController::class, 'update'])->name('admin.update');
+});
+
+
 //CRUD food
 Route::group(['prefix'=>'foods'],function(){
     Route::get('/manager', [FoodController::class, 'index'])->name('foods');
@@ -53,7 +63,7 @@ Route::group(['prefix'=>'foods'],function(){
 
 //CRUD Category
 Route::group(['prefix' => 'category'], function () {
-    Route::get('', [CategoryController::class, 'index'])->name('category');
+    Route::get('/manager', [CategoryController::class, 'index'])->name('category');
     Route::get('create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('store', [CategoryController::class, 'store'])->name('category.store');
     Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
