@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Dashboard\FoodController;
+use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\CustomerController;
 use App\Http\Controllers\Dashboard\ManualAuthController;
@@ -36,6 +37,16 @@ Route::group(['prefix' => 'auth'], function (){
     Route::get('/login',[ManualAuthController::class, 'ask'])->name('auth.ask');
     Route::post('/login',[ManualAuthController::class,'signin'])->name('auth.signin');
     Route::get('/logout',[ManualAuthController::class, 'logout'])->name('auth.logout');
+});
+
+
+Route::get('manager', fn() => view('template.dashboard'))->name('manager');
+
+//RU Admin 
+Route::group(['prefix'=>'admins'], function(){
+    Route::get('/manager', [AdminController::class, 'index'])->name('admins');
+    Route::get('/{id}/edit',[AdminController::class, 'edit'])->name('admin.edit');
+    Route::post('/{id}/update',[AdminController::class, 'update'])->name('admin.update');
 });
 
 Route::get('manager', fn() => view('template.dashboard'))->name('manager')->middleware('manual.auth');
