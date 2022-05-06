@@ -5,7 +5,7 @@
     <div class="col-md-6">
         <div class="card shadow-lg">
             <div class="card-body">
-                <form action="{{ route('admin.update', $admin->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('manager.admin.update', $admin->id)}}" method="post" enctype="multipart/form-data">
                     <h1 class="text-content">Modify Admin {{ $admin->name }}</h1>
                     
                     @csrf
@@ -36,7 +36,7 @@
 
                     <div class="form-group text-center mt-3">
                         <button type="submit" class="btn btn-success">Update Admin</button>
-                        <a class="btn btn-secondary" href="{{ route('admins') }}" role="button">Cancel</a>
+                        {{-- <a class="btn btn-secondary" href="{{ route('admins') }}" role="button">Cancel</a> --}}
                     </div>
                 </form>
             </div>

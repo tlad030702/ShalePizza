@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\Rule;
 
 class AdminController extends Controller
 {
@@ -28,7 +29,7 @@ class AdminController extends Controller
 
     public function update(Request $request, $id)
     { 
-        $this->rules($request)->validate();
+        $this->rules($request,$id)->validate();
 
         AdminRepos::update($id, $request->name, $request->email);
 
@@ -36,9 +37,9 @@ class AdminController extends Controller
     }
 
 
-    public function confirm(Request $request)
+    public function confirm(Request $request,$id)
     {
-        $validation = $this->rules($request);
+        $validation = $this->rules($request,$id);
         if($validation->fails()){
             return redirect()->back()->withErrors($validation)->withInput();
         }
@@ -58,13 +59,13 @@ class AdminController extends Controller
     }
     
 
-    private function rules($request)
+    private function rules($request, $id)
     {
         return Validator::make(
             $request->all(),
             [
                 'name' => 'required|string|max:255',
-                'email' => 'required|string|email|max:255|unique:admins,email',
+                'email' => ['required','string','email','max:255',Rule::unique('admins')->ignore($id)],
             ],
         );
         

@@ -52,9 +52,9 @@
                     $gender = old('gender');
                 @endphp
                 <div class="form-group">
-                    <label for="gender">Gender</label>  
-                    <select name="gender" id ="Gender" class="card" style="padding: 0.375rem 0.75rem;">
-                        <option value="" {{ $Gender == '' ? 'selected':'' }}>Gender</option>
+                    <label for="gender">Gender</label>
+                    <select name="gender" id ="Gender" class="card" style="padding: 0.375rem 0.75rem;" required>
+                        <option value="">Gender</option>
                         <option value="Male" {{ $Gender != null && $Gender == 'Male' ? 'selected':'' }}>Male</option>
                         <option value="Female" {{ $Gender != null && $Gender == 'Female' ? 'selected':'' }}>Female</option>
                         <option value="Other" {{ $Gender != null && $Gender == 'Other' ? 'selected':'' }}>Other</option>
