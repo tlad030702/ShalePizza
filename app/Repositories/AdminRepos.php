@@ -33,9 +33,9 @@ class AdminRepos
          return DB::update($sql, [$name, $email, $id]);
     }
   
-    public static function confirm($password)
-    {
-        $sql = "SELECT * FROM admins WHERE password ='" . $password ."'";
-        return DB::selectOne($sql);
-    }
+    // public static function confirm($password)
+    // {
+    //     $sql = "SELECT * FROM admins WHERE password = ?";
+    //     return DB::selectOne($sql,[$password]);
+    // }
 }

@@ -77,7 +77,7 @@
                                     </div>
                                 </a>
                             </li>
-    
+
                             <li class="menu">
                                 <a href="{{ route('manager.customer') }}">
                                     <div class="mt-3">
