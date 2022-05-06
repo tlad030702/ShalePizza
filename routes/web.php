@@ -46,6 +46,7 @@ Route::get('manager', fn() => view('template.dashboard'))->name('manager');
 Route::group(['prefix'=>'admins'], function(){
     Route::get('/manager', [AdminController::class, 'index'])->name('admins');
     Route::get('/{id}/edit',[AdminController::class, 'edit'])->name('admin.edit');
+    Route::post('/{id}/update',[AdminController::class, 'update'])->name('admin.update');
 });
 
 Route::get('manager', fn() => view('template.dashboard'))->name('manager')->middleware('manual.auth');
