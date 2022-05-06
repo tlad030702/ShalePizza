@@ -13,6 +13,12 @@ class AdminRepos
         return DB::select ($sql);
     }
 
+    public static function login($email, $password)
+    {
+        $sql = "SELECT * FROM admins WHERE email='" . $email . "' AND password ='" . $password ."'";
+        return DB::selectOne($sql);
+    }
+
     public static function getByID($id)
     {
         $sql = 'SELECT * FROM admins WHERE id = ?';
