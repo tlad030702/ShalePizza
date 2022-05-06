@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Repositories\AdminRepos;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class ManualAuthController extends Controller
 {
@@ -14,15 +16,23 @@ class ManualAuthController extends Controller
 
     public function signin(Request $request){
 
-        //TODO: write your code to verify username and password
-        /**
-         * you have to check if username and password
-         * match a record in database
-         * then save username in Session and move to next page
-         * Otherwise, go back to login form
-         */
-        Session::put('email', $request->input('email'));
-        return to_route('manager');
+        $validation = $this->rules($request);
+        if($validation->fails()){
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
+        else{
+            $email = $request->input('email');
+            $password = sha1($request->input('password'));
+        }
+        
+        $account = AdminRepos::login($email, $password);
+        if($account != null){
+            Session::put('name', $account->name);
+            return to_route('manager');
+        }
+        else{
+            return redirect()->back()->with(['msg' => 'Wrong user name or password'])->withInput();
+        }
     }
 
     public function logout(){
@@ -30,5 +40,20 @@ class ManualAuthController extends Controller
             Session::forget('email');
         }
         return to_route('auth.ask');
+    }
+
+    public function rules($request)
+    {
+        return Validator::make(
+            $request->all(),
+            [
+                'email' => ['required','string','email','max:255'],
+                'password'=> ['required']
+            ],
+            [
+                'email.required'=>'email must not empty',
+                'password'=>'password must not empty'
+            ]
+        );
     }
 }

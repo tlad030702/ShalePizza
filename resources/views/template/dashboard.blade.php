@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
     <style>
         a {
-            text-decoration: none; 
+            text-decoration: none;
         }
         .table-controls > li > a svg {
             color: black;
@@ -34,50 +34,39 @@
                     <li>
                         <h3><a href="{{ route('manager') }}" class="nav-link">Shale Pizza</a></h3>
                     </li>
-                    <div class="nav-item dropdown user-profile-dropdown">
-                        <a href="" class="nav-link user" data-toggle="dropdown">
-                            <h3><span style="color: white">Hello, 
-                                {{-- {{ session('admin')->name }} --}}
-                            </span></h3>
-                        </a>
-                        <div class="dropdown-menu position-absolute">
-                            <div class="dropdown-item">
-                                <a 
-                                {{-- href="{{ route('manager.admin.edit', session('admin')->id) }}" --}}
-                                    >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                                    Profile
-                                </a>
-                            </div>
-                            <div class="dropdown-item">
-                                <a href="{{ route('auth.logout') }}" style="text-decoration: none;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-                                    Sign Out
-                                </a>
+                    <li class="mr-3">
+                        <div class="nav-item dropdown user-profile-dropdown">
+                            <a href="" class="nav-link" data-toggle="dropdown">
+                                <h3><span style="color: white">Hello, 
+                                {{\Illuminate\Support\Facades\Session::has('name')?
+                                    \Illuminate\Support\Facades\Session::get('name') : ''}}
+                                </span></h3>
+                            </a>
+                            <div class="dropdown-menu position-absolute">
+                                <div class="dropdown-item">
+                                    <a 
+                                    {{-- href="{{ route('manager.edit', session('admin')->id) }}" --}}
+                                        >
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                        Profile
+                                    </a>
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="{{ route('auth.logout') }}" style="text-decoration: none;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                                        Sign Out
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    {{-- <li class="nav-item mr-3">
-                        <!-- try without mr-3 -->
-                        <a class="nav-link" href="#">
-                          <i class="bi bi-person"></i>
-                          {{\Illuminate\Support\Facades\Session::has('name')?
-                              \Illuminate\Support\Facades\Session::get('name') : ''}}
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="{{route('auth.logout')}}">
-                          <i class="bi bi-box-arrow-left"></i>
-                          Logout
-                        </a>
-                      </li> --}}
+                    </li>    
                 </div>
             </ul>
         </header>
     </div>
     <div class="container-fluid">
         <div class="row nav">
-            <div class="col-md-3 shadow-lg">
+            <div class="col-md-3">
                 <div class="table-controls">
                     <nav>
                         <ul>

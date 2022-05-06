@@ -26,4 +26,10 @@ class AdminRepos
 
          return DB::update($sql, [$name, $email, $id]);
     }
+  
+    public static function login($email, $password)
+    {
+        $sql = "SELECT * FROM admins WHERE email='" . $email . "' AND password ='" . $password ."'";
+        return DB::selectOne($sql);
+    }
 }
