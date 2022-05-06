@@ -32,7 +32,7 @@ class AdminController extends Controller
 
         AdminRepos::update($id, $request->name, $request->email);
 
-        return to_route('admins');
+        return to_route('manager.admins');
     }
 
 
@@ -50,7 +50,7 @@ class AdminController extends Controller
         $account = AdminRepos::confirm($email, $password);
         if($account != null){
             Session::put('name', $account->name);
-            return to_route('admin.update');
+            return to_route('manager.admin.update');
         }
         else{
             return redirect()->back()->with(['msg' => 'Wrong password'])->withInput();

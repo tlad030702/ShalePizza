@@ -7,7 +7,7 @@
             Customer
         </h1>
 
-        <table class="table table-stripped table-inverse">
+        <table class="table table-striped">
             <thead class ="thead-inverse">
                 <tr>
                     <th>#</th>
