@@ -28,13 +28,14 @@
                     <div class="form-group">
                         <label for="image" class="font-weight-bold">Image</label>
                         <div class="custom-file">
-                            <input type="file" multiple class="custom-file-input">
+                            <input type="file" multiple class="custom-file-input" name="image">
                             <label class="custom-file-label" for="inputGroupFile01">Choose files</label>
                         </div>
+                        @error('image')
+                            <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror 
                     </div>
-                    @error('image')
-                        <small class="form-text text-danger">{{ $message }}</small>
-                    @enderror 
+                    
                     <img src="{{ asset($food->image) }}" alt="" width="200px" height="200px" class="col-md-6">
                     <input type="text" name="image" value="{{ $food->image }}" class="col-md-5" disabled>
                     
@@ -48,9 +49,8 @@
                     @endphp
                     <div class="form-group">
                         <label for="category">Category</label>
-                        <select name="category_id" id="category" class="form-control">
+                        <select name="category_id" id="category" class="form-control" required>
                             <option value="">Category</option>
-                            {{-- @php($categories=App\Repositories\CategoryRepos::getAll()) --}}
                             @foreach ($categories as $cat)
                                 <option value="{{ $cat->id }}" {{ $cId != null && $cId == $cat->id ? 'selected' : '' }}>
                                     {{ $cat->name }}

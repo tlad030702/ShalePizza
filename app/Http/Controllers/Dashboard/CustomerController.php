@@ -26,7 +26,7 @@ class CustomerController extends Controller
             $request->country,
             $request->gender
         );
-        return to_route('manager.home');
+        return to_route('home');
     }
 
     public function edit(int $id)

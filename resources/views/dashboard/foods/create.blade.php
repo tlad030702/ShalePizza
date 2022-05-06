@@ -29,7 +29,7 @@
                     <div class="form-group">
                         <label for="image" class="font-weight-bold">Image</label>
                         <div class="custom-file">
-                            <input type="file" multiple class="custom-file-input">
+                            <input type="file" multiple class="custom-file-input" name="image">
                             <label class="custom-file-label" for="inputGroupFile01">Choose files</label>
                         </div>
                     </div>

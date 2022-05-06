@@ -22,7 +22,7 @@ use App\Http\Controllers\Dashboard\ManualAuthController;
 //home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/contact', fn() => view('contact'))->name('contact');
-Route::get('/search',[HomeController::class,'contact'])->name('search.home');
+Route::get('/search',[HomeController::class,'search'])->name('search.home');
 Route::group(['prefix'=>'home'],function(){
     Route::get('detail/{id}', [HomeController::class,'show'])->name('detail.home');
     Route::get('/{id}',[HomeController::class,'filter'])->name('filter.home');

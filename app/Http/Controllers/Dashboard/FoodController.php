@@ -85,7 +85,6 @@ class FoodController extends Controller
         $message = function ($attribute, $value, $fail){
             if($value == ''){
                 $fail('You must enter name of food');
-                return $value=='';
             }
         };
         return[
