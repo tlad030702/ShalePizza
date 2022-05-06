@@ -24,8 +24,9 @@ class ManualAuthController extends Controller
             $email = $request->input('email');
             $password = sha1($request->input('password'));
         }
-        
+
         $account = AdminRepos::login($email, $password);
+        // dd($account);
         if($account != null){
             Session::put('name', $account->name);
             return to_route('manager');
@@ -39,6 +40,7 @@ class ManualAuthController extends Controller
         if (Session::has('email')){
             Session::forget('email');
         }
+        // session()->flush();
         return to_route('auth.ask');
     }
 
