@@ -42,7 +42,7 @@ class CategoryController extends Controller
 
         CategoryRepos::updates($id, $request->name);
 
-        return to_route('category');
+        return to_route('manager.category');
     }
 
     public function store(Request $request)
@@ -51,7 +51,7 @@ class CategoryController extends Controller
 
         CategoryRepos::insert($request->name);
 
-        return to_route('category');
+        return to_route('manager.category');
     }
 
     public function destroy(int $id)
@@ -67,7 +67,7 @@ class CategoryController extends Controller
     {
        CategoryRepos::delete($id);
 
-        return to_route('category');
+        return to_route('manager.category');
     }
 
     private function rules($request)

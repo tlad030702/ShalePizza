@@ -3,10 +3,10 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-6">
-        <div class="card">
+        <div class="card shadow-lg">
             <div class="card-body">
 
-            <form action="{{ route('category.destroy', $category->id) }}" method="post"> 
+            <form action="{{ route('manager.category.destroy', $category->id) }}" method="post"> 
                 @csrf
                 <h1 class="text-center">Delete Category {{ $category->name }}</h1>
 
@@ -26,6 +26,7 @@
                 @if ($shouldDelete)
                 <div class="form-group text-center mt-3">
                     <button type="submit" class="btn btn-danger">Delete</button>
+                    <a href="{{route('category')}}" class="btn btn-info">Cancel</a>
                 </div>
                 @endif
             </form>
