@@ -79,6 +79,8 @@ Route::prefix('manager')->middleware('manual.auth')->group(function () {
         Route::get('/manager', [AdminController::class, 'index'])->name('manager.admins');
         Route::get('/{id}/edit',[AdminController::class, 'edit'])->name('manager.admin.edit');
         Route::post('/{id}/update',[AdminController::class, 'update'])->name('manager.admin.update');
+        // Route::get('/{id}/check',[AdminController::class, 'check'])->name('manager.admin.check');
+        // Route::post('/{id}/confirm',[AdminController::class, 'confirm'])->name('manager.admin.confirm');
     });
 });
   

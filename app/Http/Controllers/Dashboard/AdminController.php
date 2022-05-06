@@ -36,27 +36,31 @@ class AdminController extends Controller
         return to_route('manager.admins');
     }
 
+    // public function check($id){
+    //     return view('dashboard.admin.confirm',[
+    //         'admin' => AdminRepos::getByID($id)
+    //     ]);
+    // }
 
-    public function confirm(Request $request,$id)
-    {
-        $validation = $this->rules($request,$id);
-        if($validation->fails()){
-            return redirect()->back()->withErrors($validation)->withInput();
-        }
-        else{
-            $email = $request->input('email');
-            $password = sha1($request->input('password'));
-        }
-        
-        $account = AdminRepos::confirm($email, $password);
-        if($account != null){
-            Session::put('name', $account->name);
-            return to_route('manager.admin.update');
-        }
-        else{
-            return redirect()->back()->with(['msg' => 'Wrong password'])->withInput();
-        }
-    }
+    // public function confirm(Request $request,$id)
+    // {
+    //     $validation = $this->rules($request,$id);
+    //     if($validation->fails()){
+    //         return redirect()->back()->withErrors($validation)->withInput();
+    //     }
+    //     else{
+    //         $password = sha1($request->input('password'));
+    //     }
+
+    //     $account = AdminRepos::confirm($password);
+    //     if($account != null){
+    //         Session::put('id', $account->id);
+    //         return to_route('manager.admin.edit');
+    //     }
+    //     else{
+    //         return redirect()->back()->with(['msg' => 'Wrong password'])->withInput();
+    //     }
+    // }
     
 
     private function rules($request, $id)
