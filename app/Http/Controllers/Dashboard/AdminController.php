@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use Illuminate\Http\Request;
 use App\Repositories\AdminRepos;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 
@@ -33,6 +34,29 @@ class AdminController extends Controller
 
         return to_route('admins');
     }
+
+
+    public function confirm(Request $request)
+    {
+        $validation = $this->rules($request);
+        if($validation->fails()){
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
+        else{
+            $email = $request->input('email');
+            $password = sha1($request->input('password'));
+        }
+        
+        $account = AdminRepos::confirm($email, $password);
+        if($account != null){
+            Session::put('name', $account->name);
+            return to_route('admin.update');
+        }
+        else{
+            return redirect()->back()->with(['msg' => 'Wrong password'])->withInput();
+        }
+    }
+    
 
     private function rules($request)
     {
