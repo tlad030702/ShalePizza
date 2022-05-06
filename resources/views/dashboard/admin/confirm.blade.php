@@ -6,7 +6,9 @@
         <div class="card shadow-lg">
             <div class="card-body">
 
-            <form action="{{ route('category.store') }}" method="post">
+            <form 
+            {{-- action="{{ route('category.store') }}" method="post" --}}
+            >
                 <h1 class="text-center">Modify Password</h1>
                 @csrf
 

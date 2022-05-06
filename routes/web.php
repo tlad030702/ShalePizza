@@ -40,9 +40,7 @@ Route::group(['prefix' => 'auth'], function (){
 });
 
 //manage
-Route::prefix('manager')->
-// middleware('manual.auth')->
-group(function () {
+Route::prefix('manager')->middleware('manual.auth')->group(function () {
     Route::get('', fn() => view('template.dashboard'))->name('manager');
     //CRUD food
     Route::group(['prefix'=>'foods'],function(){
@@ -80,6 +78,7 @@ group(function () {
     Route::group(['prefix'=>'admins'], function(){
         Route::get('/manager', [AdminController::class, 'index'])->name('manager.admins');
         Route::get('/{id}/edit',[AdminController::class, 'edit'])->name('manager.admin.edit');
+        Route::post('/{id}/update',[AdminController::class, 'update'])->name('manager.admin.update');
     });
 });
   
