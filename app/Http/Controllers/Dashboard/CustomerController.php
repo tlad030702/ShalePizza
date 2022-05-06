@@ -26,7 +26,7 @@ class CustomerController extends Controller
             $request->country,
             $request->gender
         );
-        return to_route('home');
+        return to_route('manager.home');
     }
 
     public function edit(int $id)
@@ -50,7 +50,7 @@ class CustomerController extends Controller
             $request->gender
         );
 
-        return to_route('customer');
+        return to_route('manager.customer');
     }
 
     public function confirm($id){
@@ -63,7 +63,7 @@ class CustomerController extends Controller
     {
         CustomerRepos::delete($id);
 
-        return to_route('customer');
+        return to_route('manager.customer');
     }
 
     public function rules(){

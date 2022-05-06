@@ -6,7 +6,7 @@
         <div class="card shadow-lg">
             <div class="card-body">
 
-            <form action="{{ route('category.update', $category->id) }}" method="post">
+            <form action="{{ route('manager.category.update', $category->id) }}" method="post">
                 <h1 class="text-center">Modify Category {{ $category->name }}</h1>
 
                 @csrf
