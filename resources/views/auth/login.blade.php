@@ -80,13 +80,13 @@
           <div class="card-header">Login</div>
           <div class="card-body">
             
-            <form action="{{route('auth.signin')}}" method="POST">
+            <form action="{{route('auth.signin')}}" method="post">
               @csrf
               @include('sessionmessage')
               <div class="form-group row">
                 <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
                 <div class="col-md-6">
-                    <input type="email" id="email" class="form-control" name="email" value="{{ old('email') }}">
+                    <input type="email" id="email" class="form-control" name="email">
                     @error('email')
                         <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
@@ -99,7 +99,7 @@
                   <input type="password" id="password" class="form-control" name="password">
                   @error('password')
                         <small class="form-text text-danger">{{ $message }}</small>
-                  @enderror
+                @enderror
                 </div>
               </div>
 

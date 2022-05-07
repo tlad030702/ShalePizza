@@ -24,7 +24,7 @@ class ManualAuthController extends Controller
             $email = $request->input('email');
             $password = sha1($request->input('password'));
         }
-
+        
         $account = AdminRepos::login($email, $password);
         if($account != null){
             Session::put('email', $account->email);

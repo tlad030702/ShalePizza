@@ -6,7 +6,7 @@
         <div class="card shadow-lg">
             <div class="card-body">
 
-            <form action="{{ route('manager.category.destroy', $category->id) }}" method="post"> 
+            <form action="{{ route('category.destroy', $category->id) }}" method="post"> 
                 @csrf
                 <h1 class="text-center">Delete Category {{ $category->name }}</h1>
 

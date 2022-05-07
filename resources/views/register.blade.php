@@ -20,50 +20,46 @@
                     <h3 class="text-center">Customer Register</h3>
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" name="name" id="name" placeholder="Your name" class="form-control" value="{{ old('name') }}">
+                        <input type="text" name="name" id="name" placeholder="Your name" class="form-control">
                         @error('name')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="email" placeholder="Your email" class="form-control" value="{{ old('email') }}">
+                        <input type="email" name="email" id="email" placeholder="Your email" class="form-control">
                         @error('email')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone number</label>
-                        <input type="text" name="phone" placeholder="Your phone number" class="form-control" value="{{ old('phone') }}">
+                        <input type="text" name="phone" placeholder="Your phone number" class="form-control">
                         @error('phone')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="address">Address</label>
-                        <input type="text" name="address" placeholder="Your address" class="form-control" value="{{ old('address') }}">
+                        <input type="text" name="address" placeholder="Your address" class="form-control">
                         @error('address')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="country">Country</label>
-                        <input type="text" name="country" placeholder="Your country" class="form-control" value="{{ old('country') }}">
+                        <input type="text" name="country" placeholder="Your country" class="form-control">
                         @error('country')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>
-
-                    @php
-                        $Gender = old('gender') ?? null;
-                    @endphp
                     <div class="form-group">
                         <label for="gender">Gender</label>  
                         <select name="gender" id ="Gender" class="card" style="padding: 0.375rem 0.75rem;">
                             <option value="">Gender</option>
-                            <option value="Male" {{ $Gender != null && $Gender == 'Male' ? 'selected':'' }}>Male</option>
-                            <option value="Female" {{ $Gender != null && $Gender == 'Female' ? 'selected':'' }}>Female</option>
-                            <option value="Other" {{ $Gender != null && $Gender == 'Other' ? 'selected':'' }}>Other</option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Other">Other</option>
                         </select>
                         @error('gender')
                             <small class="form-text text-danger">{{ $message }}</small>

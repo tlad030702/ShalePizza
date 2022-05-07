@@ -22,7 +22,6 @@
             </thead>
             <tbody>
                 @foreach ($customers as $customer)
-                
                     <tr>
                         <td scope="row">{{ $loop->iteration }}</td>
                         <td>{{ $customer->name }}</td>
@@ -52,7 +51,6 @@
         </table>
     </div>
 </div>
-
 @endsection
 
 @push('scripts')

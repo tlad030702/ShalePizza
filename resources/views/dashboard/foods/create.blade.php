@@ -5,7 +5,7 @@
     <div class="col-md-6">
         <div class="card shadow-lg">
             <div class="card-body">
-                <form action="{{ route('manager.foods.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('foods.store') }}" method="post" enctype="multipart/form-data">
                     <h1 class="text-content">Create new food</h1>
                     
                     @csrf

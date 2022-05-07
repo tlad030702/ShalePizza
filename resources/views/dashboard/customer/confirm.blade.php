@@ -6,7 +6,7 @@
         <div class="card shadow-lg">
             <div class="card-body">
 
-            <form action="{{ route('manager.customer.delete', $customer->id) }}" method="post">
+            <form action="{{ route('customer.delete', $customer->id) }}" method="post">
                 <h1 class="text-center">Confirm delete {{ $customer->name }}</h1>
 
                 @csrf

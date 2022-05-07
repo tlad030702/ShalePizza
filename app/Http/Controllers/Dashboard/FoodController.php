@@ -39,7 +39,7 @@ class FoodController extends Controller
             $request->description,
             $request->category_id
         );
-        return to_route('manager.foods');
+        return to_route('foods');
     }
 
     public function edit($id){
@@ -60,7 +60,7 @@ class FoodController extends Controller
             $request->category_id
         );
 
-        return to_route('manager.foods');
+        return to_route('foods');
     }
 
     public function upload(UploadedFile $image){
@@ -78,7 +78,7 @@ class FoodController extends Controller
 
     public function delete($id){
         FoodRepo::delete($id);
-        return to_route('manager.foods');
+        return to_route('foods');
     }
 
     public function rules(){
