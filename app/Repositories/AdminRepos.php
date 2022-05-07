@@ -16,7 +16,7 @@ class AdminRepos
     public static function login($email, $password)
     {
         $sql = "SELECT * FROM admins WHERE email='" . $email . "' AND password ='" . $password ."'";
-        return DB::selectOne($sql);
+        return DB::select($sql)[0] ?? null;
     }
 
     public static function getByID($id)

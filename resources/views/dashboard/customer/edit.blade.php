@@ -49,7 +49,6 @@
 
                 @php
                     $Gender = old('gender') ?? $customer->gender ?? null;
-                    $gender = old('gender');
                 @endphp
                 <div class="form-group">
                     <label for="gender">Gender</label>

@@ -42,9 +42,8 @@
                         <input type="text" name="description" class="form-control" value="{{ old('description') }}">
                     </div>
                     
-                    
                     @php
-                        $cId = old('category') ?? $food->category_id ?? null;
+                        $cId = old('category_id') ?? $food->category_id ?? null;
                     @endphp
                     <div class="form-group">
                         <label for="category" class="font-weight-bold">Category</label>
