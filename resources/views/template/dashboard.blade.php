@@ -27,43 +27,33 @@
 
 </head>
 <body>
-    <div class="header-container fixed-top">
-        <header class="bg-dark">
-            <ul class="text-center">
-                <div class="row">
-                    <li>
-                        <h3><a href="{{ route('manager') }}" class="nav-link">Shale Pizza</a></h3>
-                    </li>
-                    <li class="mr-3">
-                        <div class="nav-item dropdown user-profile-dropdown">
-                            <a href="" class="nav-link" data-toggle="dropdown">
-                                <h3><span style="color: white">Hello, 
-                                {{\Illuminate\Support\Facades\Session::has('name')?
-                                    \Illuminate\Support\Facades\Session::get('name') : ''}}
-                                </span></h3>
-                            </a>
-                            <div class="dropdown-menu position-absolute">
-                                <div class="dropdown-item">
-                                    <a 
-                                    {{-- href="{{ route('manager.edit', session('admin')->id) }}" --}}
-                                        >
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                                        Profile
-                                    </a>
-                                </div>
-                                <div class="dropdown-item">
-                                    <a href="{{ route('auth.logout') }}" style="text-decoration: none;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-                                        Sign Out
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>    
+    <nav class="navbar navbar-dark bg-dark navbar-laravel fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Shale Pizza</a>
+            
+            <div class="nav-item dropdown user-profile-dropdown">
+            <a href="" class="nav-link" data-toggle="dropdown">
+                <span style="color: white">Hello, 
+                {{\Illuminate\Support\Facades\Session::has('name')?
+                    \Illuminate\Support\Facades\Session::get('name') : ''}}
+                </span>
+            </a>
+            <div class="dropdown-menu position-absolute">
+                <div class="dropdown-item">
+                    <a href="{{ route('manager.admin.edit', session('id')) }}" style="text-decoration: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        Profile
+                    </a>
                 </div>
-            </ul>
-        </header>
-    </div>
+                <div class="dropdown-item">
+                    <a href="{{ route('auth.logout') }}" type="submit" style="text-decoration: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                        Sign Out
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
     <div class="container-fluid">
         <div class="row nav">
             <div class="col-md-3">
@@ -71,18 +61,7 @@
                     <nav>
                         <ul>
                             <li class="menu">
-                                <a href="{{ route('admins') }}">
-                                    <div class="mt-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-                                          </svg>
-                                        <span>Manage Admin</span>
-                                    </div>
-                                </a>
-                                </li>
-
-                            <li class="menu">
-                            <a href="{{ route('category') }}">
+                            <a href="{{ route('manager.category') }}">
                                 <div class="mt-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                                     <span>Manage Category</span>
@@ -91,19 +70,28 @@
                             </li>
     
                             <li class="menu">
-                                <a href="{{ route('foods') }}">
+                                <a href="{{ route('manager.foods') }}">
                                     <div class="mt-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-archive"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect x="1" y="3" width="22" height="5"></rect><line x1="10" y1="12" x2="14" y2="12"></line></svg>
                                         <span>Manage Food</span>
                                     </div>
                                 </a>
                             </li>
-    
+
                             <li class="menu">
-                                <a href="{{ route('customer') }}">
+                                <a href="{{ route('manager.customer') }}">
                                     <div class="mt-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                                         <span>Manage Customer</span>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="menu">
+                                <a href="{{ route('manager.admins') }}">
+                                    <div class="mt-3">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                      <span>Manage Admin</span>
                                     </div>
                                 </a>
                             </li>

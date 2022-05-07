@@ -29,7 +29,7 @@
                     <div class="form-group">
                         <label for="image" class="font-weight-bold">Image</label>
                         <div class="custom-file">
-                            <input type="file" multiple class="custom-file-input">
+                            <input type="file" multiple class="custom-file-input" name="image">
                             <label class="custom-file-label" for="inputGroupFile01">Choose files</label>
                         </div>
                     </div>
@@ -42,9 +42,8 @@
                         <input type="text" name="description" class="form-control" value="{{ old('description') }}">
                     </div>
                     
-                    
                     @php
-                        $cId = old('category') ?? $food->category_id ?? null;
+                        $cId = old('category_id') ?? $food->category_id ?? null;
                     @endphp
                     <div class="form-group">
                         <label for="category" class="font-weight-bold">Category</label>

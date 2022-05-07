@@ -13,6 +13,12 @@ class AdminRepos
         return DB::select ($sql);
     }
 
+    public static function login($email, $password)
+    {
+        $sql = "SELECT * FROM admins WHERE email='" . $email . "' AND password ='" . $password ."'";
+        return DB::select($sql)[0] ?? null;
+    }
+
     public static function getByID($id)
     {
         $sql = 'SELECT * FROM admins WHERE id = ?';
@@ -27,9 +33,9 @@ class AdminRepos
          return DB::update($sql, [$name, $email, $id]);
     }
   
-    public static function login($password)
-    {
-        $sql = "SELECT * FROM admins WHERE password ='" . $password ."'";
-        return DB::selectOne($sql);
-    }
+    // public static function confirm($password)
+    // {
+    //     $sql = "SELECT * FROM admins WHERE password = ?";
+    //     return DB::selectOne($sql,[$password]);
+    // }
 }

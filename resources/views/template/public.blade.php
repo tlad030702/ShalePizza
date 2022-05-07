@@ -17,15 +17,6 @@
    
     @stack('styles')
 
-    <style>
-      .bg-pizza {
-        background-color: #ee3b3b !important;
-      }
-
-      .form-group {
-        margin-top: .5rem; 
-      }
-    </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow sticky-top" id="nav">
@@ -37,10 +28,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{ route('home') }}#menu">Menu</a>
+              <a class="nav-link active" href="{{ route('home') }}#menu">Menu</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href=" {{ route('contact') }}">Contact us</a>
+              <a class="nav-link active" href=" {{ route('contact') }}">Contact us</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="{{ asset('delivery-menu.pdf') }}" download="delivery-menu.pdf">Download menu</a>

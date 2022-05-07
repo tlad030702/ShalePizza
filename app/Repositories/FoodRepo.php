@@ -34,13 +34,13 @@ class FoodRepo
     public static function getById($id){
         $sql = "SELECT * FROM food WHERE id = ?";
 
-        return DB::selectOne($sql,[$id]);
+        return DB::select($sql,[$id])[0];
     }
 
     public static function getByIdWithCategory($id){
         $sql = 'SELECT food.* , categories.name as categoryName FROM food JOIN categories on food.category_id = categories.id WHERE food.id = ?';
 
-        return DB::selectOne( $sql, [$id]);
+        return DB::select( $sql, [$id])[0];
     }
 
     public static function getRelativesByCategory($id, $limit){

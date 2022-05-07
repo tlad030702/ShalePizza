@@ -27,7 +27,10 @@ class ManualAuthController extends Controller
         
         $account = AdminRepos::login($email, $password);
         if($account != null){
+            Session::put('email', $account->email);
+            Session::put('id', $account->id);
             Session::put('name', $account->name);
+
             return to_route('manager');
         }
         else{

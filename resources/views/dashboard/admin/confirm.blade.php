@@ -6,16 +6,16 @@
         <div class="card shadow-lg">
             <div class="card-body">
 
-            <form action="{{ route('category.store') }}" method="post">
+            <form action="{{ route('manager.admin.confirm', $admin->id) }}" method="post">
                 <h1 class="text-center">Modify Password</h1>
                 @csrf
-
+                @include('sessionmessage')
                 <div class="form-group">
-                    <label for ="name">Password</label>
-                    <input type="text" class="form-control" id="name" 
-                    name="name" value="">
+                    <label for ="password">Password</label>
+                    <input type="password" class="form-control" id="password" 
+                    name="password">
                 </div>
-                @error('name')
+                @error('password')
                         <small class="form-text text-danger">{{ $message }}</small>
                 @enderror
 

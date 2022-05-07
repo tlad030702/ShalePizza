@@ -25,9 +25,9 @@ class FoodController extends Controller
     }
 
     public function create(){
-        return view('dashboard.foods.create',
-            ['categories'=>CategoryRepos::getAll()]
-        );
+        return view('dashboard.foods.create',[
+            'categories'=>CategoryRepos::getAll()
+        ]);
     }
 
     public function store(Request $request){
@@ -64,7 +64,7 @@ class FoodController extends Controller
     }
 
     public function upload(UploadedFile $image){
-        $str = Str::random(7) . $image->getClientOriginalName() . $image->getClientOriginalName();
+        $str =Str::random(7) . $image->getClientOriginalName();
         $image->move(public_path('media'), $str);
         return "media/$str";
     }
@@ -85,7 +85,6 @@ class FoodController extends Controller
         $message = function ($attribute, $value, $fail){
             if($value == ''){
                 $fail('You must enter name of food');
-                return $value=='';
             }
         };
         return[

@@ -60,12 +60,11 @@ class CategoryController extends Controller
             'category' => CategoryRepos::getById($id),
             'shouldDelete' => count(CategoryRepos::getAllFoodByCate($id)) == 0
         ]);
-        
     }
 
     public function delete(int $id)
     {
-       CategoryRepos::delete($id);
+        CategoryRepos::delete($id);
 
         return to_route('category');
     }
