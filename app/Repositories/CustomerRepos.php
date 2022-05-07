@@ -17,7 +17,7 @@ class CustomerRepos
     {
         $sql = 'SELECT * FROM customers WHERE id = ?';
 
-        return DB::selectOne($sql, [$id]);
+        return DB::select($sql, [$id])[0];
     }
 
     public static function insert($name, $email, $phone, $address, $country, $gender)

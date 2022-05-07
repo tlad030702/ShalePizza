@@ -19,8 +19,8 @@ class FoodController extends Controller
 
     public function search(Request $request){
         return view('dashboard.foods.search',[
-            'search' => FoodRepo::search($request->search),
-            'foods' => FoodRepo::getAllWithCategory()
+            'search' => FoodRepo::search($request->search)
+            // 'foods' => FoodRepo::getAllWithCategory()
         ]);
     }
 
@@ -39,7 +39,7 @@ class FoodController extends Controller
             $request->description,
             $request->category_id
         );
-        return to_route('foods');
+        return to_route('manager.foods');
     }
 
     public function edit($id){
@@ -60,7 +60,7 @@ class FoodController extends Controller
             $request->category_id
         );
 
-        return to_route('foods');
+        return to_route('manager.foods');
     }
 
     public function upload(UploadedFile $image){
@@ -78,7 +78,7 @@ class FoodController extends Controller
 
     public function delete($id){
         FoodRepo::delete($id);
-        return to_route('foods');
+        return to_route('manager.foods');
     }
 
     public function rules(){

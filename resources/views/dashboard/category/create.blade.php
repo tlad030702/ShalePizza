@@ -6,7 +6,7 @@
         <div class="card shadow-lg">
             <div class="card-body">
 
-            <form action="{{ route('category.store') }}" method="post">
+            <form action="{{ route('manager.category.store') }}" method="post">
                 <h1 class="text-center">Create Category</h1>
                 @csrf
 

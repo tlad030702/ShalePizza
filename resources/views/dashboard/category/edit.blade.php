@@ -6,7 +6,7 @@
         <div class="card shadow-lg">
             <div class="card-body">
 
-            <form action="{{ route('category.update', $category->id) }}" method="post">
+            <form action="{{ route('manager.category.update', $category->id) }}" method="post">
                 <h1 class="text-center">Modify Category {{ $category->name }}</h1>
 
                 @csrf
@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <label for ="name">Name</label>
                     <input type="text" class="form-control" id="name" 
-                    name="name" value= "{{old('name') ?? $category->name ?? null}}">
+                    name="name" value= "{{old('name', $category->name ?? null)}}">
                 </div>
                 @error('name')
                         <small class="form-text text-danger">{{ $message }}</small>
